@@ -40,12 +40,20 @@ const App = () => {
   };
 
   // 🎭 Detect mood from text
-  const detectMood = (text) => {
-    if (text.includes("😡") || text.includes("রাগ") || text.includes("থাপ্প")) return "angry";
-    if (text.includes("😢") || text.includes("মন খারাপ") || text.includes("কেউ না")) return "sad";
-    if (text.includes("🥰") || text.includes("ভালো") || text.includes("গর্ব")) return "happy";
+function detectMood(text) {
+  const lower = text.toLowerCase();
+
+  if (lower.includes("মরিস") || lower.includes("খুন করব") || lower.includes("বোকা") || lower.includes("তুই") && lower.includes("করছিস")) {
+    return "angry";
+  } else if (lower.includes("দাম নেই") || lower.includes("কেউ না") || lower.includes("অবহেলা") || lower.includes("অশ্রদ্ধা")) {
+    return "sad";
+  } else if (lower.includes("রসগোল্লা") || lower.includes("গর্ব") || lower.includes("ভালোবাসি")) {
+    return "happy";
+  } else {
     return "neutral";
-  };
+  }
+}
+
 
   // 📩 Send prompt to backend and process response
   const handleAsk = async () => {
