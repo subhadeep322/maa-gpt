@@ -2,6 +2,9 @@ import express from "express";
 import axios from "axios";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
 dotenv.config();
 
 const app = express();
@@ -69,4 +72,16 @@ app.post("/api/ask", async (req, res) => {
   }
 });
 
+// ✅ React frontend serving — DO NOT remove this
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+// Server start
 app.listen(5000, () => console.log("✅ Maa GPT backend running → http://localhost:5000"));
