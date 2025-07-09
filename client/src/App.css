@@ -1,0 +1,143 @@
+body, html {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 30px 20px;
+  transition: background 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  width: 95%;
+  max-width: 600px;
+  height: 140px;
+  font-size: 16px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background: #d84315;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.response {
+  margin-top: 25px;
+  max-width: 600px;
+  padding: 18px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.mood-angry {
+  background-color: #3b0000;
+  color: white;
+}
+
+.mood-sad {
+  background-color: #1c2238;
+  color: #cbd7ff;
+}
+
+.mood-happy {
+  background-color: #fffde7;
+  color: #4e342e;
+}
+
+.mood-neutral {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.intro-text h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #6a1b1a;
+}
+
+.meter {
+  width: 250px;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.meter.anger .meter-fill {
+  background-color: #c62828;
+}
+
+.meter.happy .meter-fill {
+  background-color: #fbc02d;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+.slap-image {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.slap-image.show {
+  opacity: 1;
+}
+@keyframes slapShake {
+  0% { transform: scale(1) rotate(0deg); }
+  20% { transform: scale(1.1) rotate(-3deg); }
+  40% { transform: scale(1.1) rotate(3deg); }
+  60% { transform: scale(1.1) rotate(-2deg); }
+  80% { transform: scale(1.05) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.slap-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slap-image.show {
+  opacity: 1;
+  animation: slapShake 0.5s ease;
+}
