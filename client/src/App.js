@@ -49,7 +49,7 @@ const App = () => {
 
   // 📩 Send prompt to backend and process response
   const handleAsk = async () => {
-    const res = await axios.post("http://localhost:5000/api/ask", { prompt });
+    const res = await axios.post("https://maa-gpt.onrender.com/api/ask", { prompt });
     const reply = res.data.reply;
     setResponse(reply);
     speakBengali(reply);
